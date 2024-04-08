@@ -6,7 +6,7 @@ namespace RecipeManager
     class Ingredient
     {
         public string Name { get; set; }
-        public double Quantity { get; set; }
+        public string Quantity { get; set; } // Changed to string type
         public string Unit { get; set; }
     }
 
@@ -131,13 +131,8 @@ namespace RecipeManager
                 Console.Write("Name: ");
                 ingredients[i].Name = Console.ReadLine();
 
-                double quantity;
                 Console.Write("Quantity: ");
-                while (!double.TryParse(Console.ReadLine(), out quantity) || quantity <= 0)
-                {
-                    Console.WriteLine("Please enter a valid quantity greater than zero:");
-                }
-                ingredients[i].Quantity = quantity;
+                ingredients[i].Quantity = Console.ReadLine(); // Accepts non-numeric values
 
                 Console.Write("Unit: ");
                 ingredients[i].Unit = Console.ReadLine();
@@ -205,13 +200,8 @@ namespace RecipeManager
             Console.Write("Name: ");
             ingredients[ingredientNumber].Name = Console.ReadLine();
 
-            double quantity;
             Console.Write("Quantity: ");
-            while (!double.TryParse(Console.ReadLine(), out quantity) || quantity <= 0)
-            {
-                Console.WriteLine("Please enter a valid quantity greater than zero:");
-            }
-            ingredients[ingredientNumber].Quantity = quantity;
+            ingredients[ingredientNumber].Quantity = Console.ReadLine(); // Accepts non-numeric values
 
             Console.Write("Unit: ");
             ingredients[ingredientNumber].Unit = Console.ReadLine();
@@ -265,10 +255,18 @@ namespace RecipeManager
             for (int i = 0; i < ingredients.Length; i++)
             {
                 // Update quantities based on scaling factor
-                ingredients[i].Quantity *= factor;
+                double quantity;
+                if (double.TryParse(ingredients[i].Quantity, out quantity)) // Check if quantity is numeric
+                {
+                    ingredients[i].Quantity = (quantity * factor).ToString(); // Update quantity as string
 
-                // Adjust unit if necessary (example: tablespoons to cups)
-                AdjustUnit(ingredients[i]);
+                    // Adjust unit if necessary (example: tablespoons to cups)
+                    AdjustUnit(ingredients[i]);
+                }
+                else
+                {
+                    Console.WriteLine($"Invalid quantity for {ingredients[i].Name}. Skipping scaling for this ingredient.");
+                }
             }
 
             Console.WriteLine("Recipe scaled successfully.");
@@ -277,12 +275,7 @@ namespace RecipeManager
         // Method to adjust unit of measurement based on quantity
         static void AdjustUnit(Ingredient ingredient)
         {
-            if (ingredient.Quantity >= 16 && ingredient.Unit == "tablespoon")
-            {
-                ingredient.Quantity /= 16;
-                ingredient.Unit = "cup";
-            }
-            // Add more conversions as needed
+            // Add logic here to adjust units based on quantity if needed
         }
 
         // Method to reset ingredient quantities to original values
@@ -315,4 +308,3 @@ namespace RecipeManager
         }
     }
 }
-
