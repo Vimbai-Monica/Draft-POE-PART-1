@@ -26,7 +26,6 @@ namespace RecipeManager
 
         static void Main(string[] args)
         {
-            
             Console.WriteLine("Welcome to Recipe Manager!");
             DisplayMenu();
 
