@@ -104,10 +104,18 @@ namespace RecipeManager
         static void EnterRecipe()
         {
             Console.WriteLine("Enter the number of ingredients:");
-            int numIngredients = int.Parse(Console.ReadLine());
+            int numIngredients;
+            while (!int.TryParse(Console.ReadLine(), out numIngredients) || numIngredients <= 0)
+            {
+                Console.WriteLine("Please enter a valid number greater than zero for the number of ingredients:");
+            }
 
             Console.WriteLine("Enter the number of steps:");
-            int numSteps = int.Parse(Console.ReadLine());
+            int numSteps;
+            while (!int.TryParse(Console.ReadLine(), out numSteps) || numSteps <= 0)
+            {
+                Console.WriteLine("Please enter a valid number greater than zero for the number of steps:");
+            }
 
             // Initialize arrays based on user input
             ingredients = new Ingredient[numIngredients];
@@ -123,8 +131,13 @@ namespace RecipeManager
                 Console.Write("Name: ");
                 ingredients[i].Name = Console.ReadLine();
 
+                double quantity;
                 Console.Write("Quantity: ");
-                ingredients[i].Quantity = double.Parse(Console.ReadLine());
+                while (!double.TryParse(Console.ReadLine(), out quantity) || quantity <= 0)
+                {
+                    Console.WriteLine("Please enter a valid quantity greater than zero:");
+                }
+                ingredients[i].Quantity = quantity;
 
                 Console.Write("Unit: ");
                 ingredients[i].Unit = Console.ReadLine();
@@ -176,50 +189,51 @@ namespace RecipeManager
         static void EditIngredients()
         {
             Console.WriteLine("Enter the ingredient number to edit:");
-            int ingredientNumber = int.Parse(Console.ReadLine()) - 1; // Adjust for zero-based index
-
-            if (ingredientNumber >= 0 && ingredientNumber < ingredients.Length)
+            int ingredientNumber;
+            while (!int.TryParse(Console.ReadLine(), out ingredientNumber) || ingredientNumber <= 0 || ingredientNumber > ingredients.Length)
             {
-                Console.WriteLine($"Current details of ingredient {ingredientNumber + 1}:");
-                Console.WriteLine($"Name: {ingredients[ingredientNumber].Name}");
-                Console.WriteLine($"Quantity: {ingredients[ingredientNumber].Quantity}");
-                Console.WriteLine($"Unit: {ingredients[ingredientNumber].Unit}");
-
-                Console.WriteLine("Enter new details:");
-                Console.Write("Name: ");
-                ingredients[ingredientNumber].Name = Console.ReadLine();
-
-                Console.Write("Quantity: ");
-                ingredients[ingredientNumber].Quantity = double.Parse(Console.ReadLine());
-
-                Console.Write("Unit: ");
-                ingredients[ingredientNumber].Unit = Console.ReadLine();
-
-                Console.WriteLine("Ingredient updated successfully.");
+                Console.WriteLine($"Please enter a valid ingredient number between 1 and {ingredients.Length}:");
             }
-            else
+            ingredientNumber--; // Adjust for zero-based index
+
+            Console.WriteLine($"Current details of ingredient {ingredientNumber + 1}:");
+            Console.WriteLine($"Name: {ingredients[ingredientNumber].Name}");
+            Console.WriteLine($"Quantity: {ingredients[ingredientNumber].Quantity}");
+            Console.WriteLine($"Unit: {ingredients[ingredientNumber].Unit}");
+
+            Console.WriteLine("Enter new details:");
+            Console.Write("Name: ");
+            ingredients[ingredientNumber].Name = Console.ReadLine();
+
+            double quantity;
+            Console.Write("Quantity: ");
+            while (!double.TryParse(Console.ReadLine(), out quantity) || quantity <= 0)
             {
-                Console.WriteLine("Invalid ingredient number.");
+                Console.WriteLine("Please enter a valid quantity greater than zero:");
             }
+            ingredients[ingredientNumber].Quantity = quantity;
+
+            Console.Write("Unit: ");
+            ingredients[ingredientNumber].Unit = Console.ReadLine();
+
+            Console.WriteLine("Ingredient updated successfully.");
         }
 
         // Method to edit steps
         static void EditSteps()
         {
             Console.WriteLine("Enter the step number to edit:");
-            int stepNumber = int.Parse(Console.ReadLine()) - 1; // Adjust for zero-based index
+            int stepNumber;
+            while (!int.TryParse(Console.ReadLine(), out stepNumber) || stepNumber <= 0 || stepNumber > steps.Length)
+            {
+                Console.WriteLine($"Please enter a valid step number between 1 and {steps.Length}:");
+            }
+            stepNumber--; // Adjust for zero-based index
 
-            if (stepNumber >= 0 && stepNumber < steps.Length)
-            {
-                Console.WriteLine($"Current description of step {stepNumber + 1}: {steps[stepNumber].Description}");
-                Console.WriteLine("Enter new description:");
-                steps[stepNumber].Description = Console.ReadLine();
-                Console.WriteLine("Step updated successfully.");
-            }
-            else
-            {
-                Console.WriteLine("Invalid step number.");
-            }
+            Console.WriteLine($"Current description of step {stepNumber + 1}: {steps[stepNumber].Description}");
+            Console.WriteLine("Enter new description:");
+            steps[stepNumber].Description = Console.ReadLine();
+            Console.WriteLine("Step updated successfully.");
         }
 
         // Method to display the full recipe
@@ -242,7 +256,11 @@ namespace RecipeManager
         static void ScaleRecipe()
         {
             Console.WriteLine("\nEnter scaling factor (0.5, 2, or 3):");
-            double factor = double.Parse(Console.ReadLine());
+            double factor;
+            while (!double.TryParse(Console.ReadLine(), out factor) || (factor != 0.5 && factor != 2 && factor != 3))
+            {
+                Console.WriteLine("Please enter a valid scaling factor (0.5, 2, or 3):");
+            }
 
             for (int i = 0; i < ingredients.Length; i++)
             {
@@ -297,3 +315,4 @@ namespace RecipeManager
         }
     }
 }
+
