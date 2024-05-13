@@ -1,0 +1,68 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\vimba\\Videos\\SEMESTER 1 UNIVERSITY PACKAGE _ 2024\\PROGRAMMING 2A(C#)       (PROG6221)\\ASSIGNMENT\\POE PART 1\\DRAFT\\Draft-POE PART 1\\Draft-POE PART 1\\Draft-POE PART 1.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\vimba\\Videos\\SEMESTER 1 UNIVERSITY PACKAGE _ 2024\\PROGRAMMING 2A(C#)       (PROG6221)\\ASSIGNMENT\\POE PART 1\\DRAFT\\Draft-POE PART 1\\Draft-POE PART 1\\Draft-POE PART 1.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\vimba\\Videos\\SEMESTER 1 UNIVERSITY PACKAGE _ 2024\\PROGRAMMING 2A(C#)       (PROG6221)\\ASSIGNMENT\\POE PART 1\\DRAFT\\Draft-POE PART 1\\Draft-POE PART 1\\Draft-POE PART 1.csproj",
+        "projectName": "Draft-POE PART 1",
+        "projectPath": "C:\\Users\\vimba\\Videos\\SEMESTER 1 UNIVERSITY PACKAGE _ 2024\\PROGRAMMING 2A(C#)       (PROG6221)\\ASSIGNMENT\\POE PART 1\\DRAFT\\Draft-POE PART 1\\Draft-POE PART 1\\Draft-POE PART 1.csproj",
+        "packagesPath": "C:\\Users\\vimba\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\vimba\\Videos\\SEMESTER 1 UNIVERSITY PACKAGE _ 2024\\PROGRAMMING 2A(C#)       (PROG6221)\\ASSIGNMENT\\POE PART 1\\DRAFT\\Draft-POE PART 1\\Draft-POE PART 1\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\vimba\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
